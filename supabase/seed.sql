@@ -1,0 +1,36 @@
+-- 초기 데이터: data/sites.json 25개 이관용
+-- schema.sql 실행 후, 이 파일 전체를 SQL Editor에 붙여넣고 Run (중복 실행해도 덮어씀)
+insert into sites (id, name, description, url, category, tags, sort_order) values
+('neis','나이스 (NEIS)','교직원 업무포털 · 성적, 생기부, 인사','https://www.neis.go.kr','업무시스템','{나이스,neis,성적,생기부}',10),
+('edunet','에듀넷 · 티클리어','수업자료, 에듀테크, 티클리어','https://www.edunet.net','업무시스템','{에듀넷,티클리어,수업자료}',20),
+('cls','e학습터','온라인 학습방 개설 · 과제 관리','https://cls.edunet.net','업무시스템','{e학습터,온라인학습,과제}',30),
+('schoolinfo','학교알리미','학교 공시정보 조회','https://www.schoolinfo.go.kr','업무시스템','{공시,학교정보}',40),
+('edufine','K-에듀파인','학교 회계 · 예산 업무','https://edufine.go.kr','업무시스템','{회계,예산,에듀파인}',50),
+('moe','교육부','교육정책, 보도자료, 법령','https://www.moe.go.kr','업무시스템','{교육부,정책}',60),
+('hiclass','하이클래스','학급 소통, 알림장, 출결','https://www.hiclass.net','수업·학급','{하이클래스,알림장,학급}',10),
+('classting','클래스팅','학급 SNS, 과제, 소통','https://www.classting.com','수업·학급','{클래스팅,학급,과제}',20),
+('ebs','EBS','방송 강의, 교재 자료','https://www.ebs.co.kr','수업·학급','{ebs,인강,방송}',30),
+('ebs-primary','EBS 초등·중학','초중 대상 무료 강의','https://primary.ebs.co.kr','수업·학급','{ebs,초등,중학}',40),
+('classroom','Google 클래스룸','구글 기반 온라인 클래스','https://classroom.google.com','수업·학급','{구글,클래스룸,온라인}',50),
+('padlet','Padlet','협업 보드, 브레인스토밍','https://padlet.com','수업·학급','{padlet,협업,보드}',60),
+('tsherpa','천재교육 T셀파','천재 교과서 교사용 자료','https://www.tsherpa.co.kr','출판사·교과서','{천재,t셀파,교과서}',10),
+('chunjae','천재교육','천재교육 공식 홈페이지','https://www.chunjae.co.kr','출판사·교과서','{천재,출판사}',20),
+('vivasam','비상 VIVA샘','비상 교과서 교사용 플랫폼','https://www.vivasam.com','출판사·교과서','{비상,viva,교과서}',30),
+('ybm','YBM','YBM 교과서 · 영어 교재','https://www.ybm.co.kr','출판사·교과서','{ybm,영어,교과서}',40),
+('dongabook','동아출판','동아 교과서 교사용 자료','https://www.dongabook.com','출판사·교과서','{동아,교과서}',50),
+('mteacher','미래엔 엠티처','미래엔 교과서 수업자료','https://www.m-teacher.co.kr','출판사·교과서','{미래엔,엠티처,교과서}',60),
+('kumsung','금성출판사','금성 교과서 · 푸르넷','https://www.kumsung.co.kr','출판사·교과서','{금성,교과서}',70),
+('jihak','지학사','지학사 교과서 자료실','https://www.jihak.co.kr','출판사·교과서','{지학사,교과서}',80),
+('sinsago','좋은책신사고','쎈 · 우공비 교사용 자료','https://www.sinsago.co.kr','출판사·교과서','{신사고,쎈,문제집}',90),
+('iscream','아이스크림','초등 수업자료 · 연수','https://www.i-scream.co.kr','출판사·교과서','{아이스크림,초등,수업자료}',100),
+('keris','KERIS','한국교육학술정보원 · 나이스, 에듀넷 운영','https://www.keris.or.kr','연수·기관','{keris,교육정보}',10),
+('teacherville','티처빌','교사 원격연수 · 직무연수','https://www.teacherville.co.kr','연수·기관','{연수,티처빌,직무연수}',20),
+('kice','한국교육과정평가원','수능 · 평가 문항 자료','https://www.kice.re.kr','연수·기관','{평가원,수능,문항}',30)
+on conflict (id) do update set
+  name = excluded.name,
+  description = excluded.description,
+  url = excluded.url,
+  category = excluded.category,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  updated_at = now();

@@ -27,18 +27,36 @@
   <main class="wrap">
     <div class="filters">
       <div id="cats" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+      <span id="dbPill" class="pill">⚪ 기본 목록 (DB 미연결)</span>
       <span id="count" class="count"></span>
       <button id="resetBtn" class="btn">초기화</button>
     </div>
 
+    <div id="popular" class="popular" style="display:none"></div>
+
     <div id="sections"></div>
 
+    <section class="suggest">
+      <h2>💡 빠진 사이트 제보하기</h2>
+      <p class="muted">선생님들이 보내준 사이트는 검토 후 반영됩니다. DB 연결 후 사용 가능합니다.</p>
+      <form id="suggestForm">
+        <input id="sgName" type="text" placeholder="사이트 이름 (예: ○○교육 티처)" maxlength="60" />
+        <input id="sgUrl" type="url" placeholder="주소 (예: https://...)" maxlength="200" />
+        <input id="sgReason" type="text" placeholder="어떤 때 쓰나요? (선택)" maxlength="120" />
+        <button class="btn primary" type="submit">제보하기</button>
+      </form>
+      <p id="suggestMsg" class="muted"></p>
+    </section>
+
     <footer class="footer">
-      <p>사이트 추가/수정: <code>data/sites.json</code> 파일에 항목만 추가하면 자동 반영됩니다. 즐겨찾기와 테마는 이 브라우저에 저장됩니다.</p>
-      <p>링크가 바뀌면 해당 <code>url</code> 값만 고치면 됩니다. 새 카테고리를 만들려면 <code>category</code>에 새 이름만 적으세요.</p>
+      <p>사이트 목록은 DB 연결 시 Supabase에서 실시간으로, 미연결 시 <code>data/sites.json</code>에서 불러옵니다. 즐겨찾기와 테마는 이 브라우저에 저장됩니다.</p>
+      <p>제보된 사이트는 Supabase <code>suggestions</code> 테이블에서 확인하세요.</p>
     </footer>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

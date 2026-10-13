@@ -103,6 +103,30 @@ h1 { font-size: 18px; margin: 0; }
 }
 .footer { color: var(--muted); font-size: 12.5px; margin-top: 28px; }
 .footer code { background: var(--card); border: 1px solid var(--line); padding: 1px 6px; border-radius: 6px; }
+.pill {
+  font-size: 12px; color: var(--muted);
+  border: 1px solid var(--line); background: var(--card);
+  border-radius: 999px; padding: 4px 10px; white-space: nowrap;
+}
+.pill.on { color: #15803d; border-color: #86efac; }
+[data-theme="dark"] .pill.on { color: #86efac; border-color: #245c3a; }
+.badge.hot { color: #b45309; border-color: #fcd34d; }
+.popular { margin: 6px 0 4px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.popular-title { font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+.popular-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  font-size: 13px; text-decoration: none; color: var(--text);
+  border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; background: var(--bg);
+}
+.chip:hover { border-color: var(--brand); color: var(--brand); }
+.suggest { margin-top: 30px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.suggest h2 { margin: 0 0 4px; font-size: 16px; }
+.muted { color: var(--muted); font-size: 13px; }
+#suggestForm { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+#suggestForm input {
+  flex: 1 1 180px; border: 1px solid var(--line); border-radius: 10px;
+  padding: 9px 12px; font-size: 13.5px; background: var(--bg); color: var(--text);
+}
 @media (max-width: 560px) {
   .search { min-width: 100%; order: 3; width: 100%; }
 }
