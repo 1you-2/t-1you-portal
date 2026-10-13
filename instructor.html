@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>강사카드 — 학교 업무 원샷</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/instructor.css" />
+</head>
+<body>
+  <header class="topbar no-print">
+    <div class="topbar-inner">
+      <div class="logo">🏫</div>
+      <div>
+        <h1>학교 업무 원샷</h1>
+        <p class="sub">강사카드 자동작성</p>
+      </div>
+      <div class="spacer"></div>
+      <nav class="tabs">
+        <a class="btn" href="index.html">🔗 링크모음</a>
+        <a class="btn active" href="instructor.html">📝 강사카드</a>
+      </nav>
+      <button id="themeBtn" class="btn">🌙 다크</button>
+    </div>
+  </header>
+
+  <main class="wrap no-print">
+    <section id="authBox" class="panel">
+      <div id="authOut">
+        <h2>🔐 구글 로그인</h2>
+        <p class="muted">프로필·강사카드는 본인 계정에만 저장됩니다 (타인 조회 불가).</p>
+        <button id="loginBtn" class="btn primary">Google로 로그인</button>
+        <p id="authMsg" class="muted"></p>
+      </div>
+      <div id="authIn" style="display:none">
+        <span id="userMail" class="muted"></span>
+        <button id="logoutBtn" class="btn">로그아웃</button>
+      </div>
+    </section>
+
+    <div id="app" style="display:none">
+      <section class="panel">
+        <h2>👤 내 프로필 <span class="muted sm">— 한 번 저장하면 매번 자동 입력</span></h2>
+        <div class="form-grid">
+          <label>성명<input id="pName" type="text" placeholder="김원유" /></label>
+          <label>생년월일<input id="pBirth" type="text" placeholder="1900.00.00" /></label>
+          <label>직장명<input id="pWork" type="text" placeholder="서울답십리초등학교" /></label>
+          <label>직위<input id="pPos" type="text" placeholder="교사" /></label>
+          <label>휴대폰<input id="pMobile" type="text" placeholder="010-0000-0000" /></label>
+          <label>직장전화<input id="pOffice" type="text" placeholder="00-0000-0000" /></label>
+          <label>이메일<input id="pEmail" type="email" placeholder="abcde@gmail.com" /></label>
+          <label>은행명<input id="pBank" type="text" placeholder="국민은행" /></label>
+          <label>계좌번호<input id="pAcct" type="text" placeholder="9-0000000-41" /></label>
+          <label>원천징수<select id="pTax"><option>기타소득</option><option>사업소득</option></select></label>
+        </div>
+        <label class="block">주요경력 (한 줄에 하나씩)<textarea id="pCareer" rows="5" placeholder="터치교사단2기, AIEDAP마스터교원…"></textarea></label>
+        <div class="row">
+          <button id="saveProfile" class="btn primary">프로필 저장</button>
+          <span id="profileMsg" class="muted"></span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>📋 이번 강의 정보 <span class="muted sm">— 건별로 입력 후 저장</span></h2>
+        <div class="form-grid">
+          <label class="span2">사업명<input id="cBiz" type="text" placeholder="2026 동부 온(溫) AI·디지털 기반 학교로 찾아가는 직무연수" /></label>
+          <label>기관/부서<input id="cOrg" type="text" placeholder="동부교육지원청 초등교육지원과" /></label>
+          <label>강의일시<input id="cWhen" type="text" placeholder="2026. 10. 12.(월) 14:40~16:40" /></label>
+          <label>강사 준비<input id="cPrepT" type="text" placeholder="PPT, 컴퓨터" /></label>
+          <label>본원 준비<input id="cPrepC" type="text" placeholder="PC, 빔 프로젝터" /></label>
+          <label>연수생 준비<input id="cPrepS" type="text" placeholder="컴퓨터 혹은 크롬북" /></label>
+          <label>책걸상 배치<select id="cSeat"><option>2인 1조</option><option>4인 1조</option><option>6인 1조</option><option>원형</option><option>기타</option></select></label>
+          <label>원고 종류<select id="cMsType"><option>새 원고</option><option>기존원고</option><option>보완원고</option></select></label>
+          <label>원고 쪽수<input id="cMsPages" type="number" min="0" value="30" /></label>
+          <label>수정·보완 %<input id="cMsPct" type="number" min="0" max="100" placeholder="보완원고만" /></label>
+          <label>前 강의 연도<input id="cPrevY" type="text" placeholder="보완원고만" /></label>
+          <label>前 연수과정명<input id="cPrevC" type="text" placeholder="보완원고만" /></label>
+          <label>작성일자<input id="cDate" type="text" placeholder="2026. 10. 1." /></label>
+        </div>
+        <h3>✔ 강사 유의사항 확인 (10항)</h3>
+        <div id="checklist" class="checks"></div>
+        <div class="row">
+          <button id="saveCard" class="btn primary">강사카드 저장</button>
+          <button id="printBtn" class="btn">🖨 인쇄 / PDF 저장</button>
+          <span id="cardMsg" class="muted"></span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>🗂 저장된 강사카드</h2>
+        <div id="cardList" class="card-list"><p class="muted">로그인 후 표시됩니다.</p></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- 인쇄 전용 영역: 교육청 양식 재현 -->
+  <div id="printArea"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/instructor.js"></script>
+</body>
+</html>
