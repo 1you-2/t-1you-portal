@@ -180,6 +180,30 @@ async function init() {
     $("#themeBtn").textContent = n === "dark" ? "☀️ 라이트" : "🌙 다크";
   };
 
+  // 예시 출력 (로그인 불필요): 실제 PDF 형태 미리보기용
+  $("#demoBtn").onclick = () => {
+    const p = {
+      full_name: "홍길동", birthdate: "1980.01.01",
+      workplace: "서울햇살초등학교", position: "교사",
+      mobile: "010-1234-5678", office_phone: "02-123-4567",
+      email: "hong@example.com", bank_name: "국민은행", account_no: "9-1234567-89",
+      tax_type: "기타소득", consent_data: true, consent_third: true,
+      career_lines: ["2024~2025 디지털선도학교 운영교사", "2023~2025 에듀테크 선도교사"],
+    };
+    const c = {
+      business_name: "2026 ○○ AI·디지털 기반 찾아가는 직무연수",
+      org_dept: "○○교육지원청 초등교육지원과",
+      lecture_at: "2026. 11. 2.(월) 14:40~16:40",
+      prep_teacher: "PPT, 노트북", prep_center: "PC, 빔 프로젝터", prep_trainee: "크롬북",
+      seating: "2인 1조", manuscript_type: "새 원고", manuscript_pages: 30,
+      manuscript_modified_pct: null, prev_year: "", prev_course: "",
+      consent_manuscript: true, written_date: "2026. 11. 1.",
+      checklist: { c1: true, c2: true, c3: true, c4: true, c5: true, c6: true, c7: true, c8: true, c9: true, c10: true },
+    };
+    renderPrint(p, c);
+    window.print();
+  };
+
   renderChecks(null);
   sb = client();
   if (!sb) {
