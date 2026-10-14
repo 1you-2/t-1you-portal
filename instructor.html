@@ -95,6 +95,7 @@
         <div class="row">
           <button id="saveCard" class="btn primary">강사카드 저장</button>
           <button id="printBtn" class="btn">🖨 인쇄 / PDF 저장</button>
+          <button id="hwpxBtn" class="btn">📄 HWPX 다운로드 (실험적)</button>
           <span id="cardMsg" class="muted"></span>
         </div>
       </section>
@@ -110,7 +111,9 @@
   <div id="printArea"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
   <script src="js/config.js"></script>
+  <script src="js/hwpx.js"></script>
   <script src="js/instructor.js"></script>
 </body>
 </html>
