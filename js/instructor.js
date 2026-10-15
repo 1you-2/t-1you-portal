@@ -248,6 +248,15 @@ async function init() {
   };
 
   $("#printBtn").onclick = () => { renderPrint(profile(), cardInput()); window.print(); };
+  $("#hwpxBtn").onclick = async () => {
+    $("#cardMsg").textContent = "HWPX 생성 중…";
+    try {
+      await window.Hwpx.download(profile(), cardInput());
+      $("#cardMsg").textContent = "✅ 다운로드됨. 한글에서 열어 확인해 주세요.";
+    } catch (e) {
+      $("#cardMsg").textContent = "❌ " + (e && e.message ? e.message : e);
+    }
+  };
   refreshCards();
 }
 init();
